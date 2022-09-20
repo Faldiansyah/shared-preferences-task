@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.postDelayed
 import androidx.navigation.Navigation
 import com.cowok.hijrah.chapter4topic4.R
 import com.cowok.hijrah.chapter4topic4.databinding.FragmentSplashBinding
@@ -31,10 +33,17 @@ class SplashFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         sharedPref = requireContext().getSharedPreferences(shareDataLogin, Context.MODE_PRIVATE)
+        val dataUser = sharedPref.getString("username", null)
 
-        Handler().postDelayed({
-            Navigation.findNavController(view).navigate(R.id.action_splashFragment_to_homeFragment)
-        }, 2000)
+        if (dataUser != null){
+            Handler(Looper.myLooper()!!).postDelayed({
+                Navigation.findNavController(view).navigate(R.id.action_splashFragment_to_homeFragment)
+            }, 2000)
+        } else {
+            Handler(Looper.myLooper()!!).postDelayed({
+                Navigation.findNavController(view).navigate(R.id.action_splashFragment_to_loginFragment)
+            }, 2000)
+        }
     }
 
 }
