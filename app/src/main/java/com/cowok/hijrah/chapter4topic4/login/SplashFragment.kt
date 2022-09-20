@@ -1,6 +1,5 @@
 package com.cowok.hijrah.chapter4topic4.login
 
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
