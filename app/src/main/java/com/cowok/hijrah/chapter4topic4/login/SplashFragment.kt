@@ -1,6 +1,7 @@
 package com.cowok.hijrah.chapter4topic4.login
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
@@ -9,7 +10,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.postDelayed
 import androidx.navigation.Navigation
 import com.cowok.hijrah.chapter4topic4.R
 import com.cowok.hijrah.chapter4topic4.databinding.FragmentSplashBinding
@@ -32,7 +32,7 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedPref = requireContext().getSharedPreferences(shareDataLogin, Context.MODE_PRIVATE)
+        sharedPref = requireContext().getSharedPreferences(shareDataLogin, MODE_PRIVATE)
         val dataUser = sharedPref.getString("username", null)
 
         if (dataUser != null){

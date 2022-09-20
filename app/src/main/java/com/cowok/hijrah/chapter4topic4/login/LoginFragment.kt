@@ -43,16 +43,19 @@ class LoginFragment : Fragment() {
             val passRegis = sharedPrefRegis.getString("password", "")
 
             if (username == userRegis && password == passRegis){
-                editorLogin.putString("username", username)
-                editorLogin.putString("password", password)
-                editorLogin.apply()
+                if (userRegis == "" && passRegis == ""){
+                    Toast.makeText(context, "Data Tidak Ada, Registrasi Terlebih Dahulu",
+                        Toast.LENGTH_SHORT).show()
+                } else {
+                    editorLogin.putString("username", username)
+                    editorLogin.putString("password", password)
+                    editorLogin.apply()
 
-                Toast.makeText(context, "Login Berhasil", Toast.LENGTH_SHORT).show()
-                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
-            } else if (username != userRegis || password != passRegis){
-                Toast.makeText(context, "Username atau Password Anda Salah", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Login Berhasil", Toast.LENGTH_SHORT).show()
+                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
+                }
             } else {
-                Toast.makeText(context, "Data Tidak Ada", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Username atau Password Anda Salah", Toast.LENGTH_SHORT).show()
             }
         }
 

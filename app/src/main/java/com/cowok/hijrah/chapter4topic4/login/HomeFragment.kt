@@ -1,6 +1,6 @@
 package com.cowok.hijrah.chapter4topic4.login
 
-import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -33,12 +33,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedPrefRegis = requireContext().getSharedPreferences(shareDataRegis, Context.MODE_PRIVATE)
-        sharedPrefLogin = requireContext().getSharedPreferences(shareDataLogin, Context.MODE_PRIVATE)
+        sharedPrefRegis = requireContext().getSharedPreferences(shareDataRegis, MODE_PRIVATE)
+        sharedPrefLogin = requireContext().getSharedPreferences(shareDataLogin, MODE_PRIVATE)
         editorLogin = sharedPrefLogin.edit()
 
-        val fullname = sharedPrefRegis.getString("full", "")
-        binding.textHello.text = "Selamat Datang, $fullname"
+        val fullname = sharedPrefRegis.getString("fullname", "")
+        binding.textHello.text = fullname
 
         binding.buttonLogout.setOnClickListener {
             editorLogin.clear()

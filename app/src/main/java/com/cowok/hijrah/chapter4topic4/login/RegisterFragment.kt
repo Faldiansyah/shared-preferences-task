@@ -1,6 +1,6 @@
 package com.cowok.hijrah.chapter4topic4.login
 
-import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -31,7 +31,7 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedPref = requireContext().getSharedPreferences(shareDataRegis, Context.MODE_PRIVATE)
+        sharedPref = requireContext().getSharedPreferences(shareDataRegis, MODE_PRIVATE)
         editor = sharedPref.edit()
 
         binding.buttonRegister.setOnClickListener {
@@ -42,9 +42,9 @@ class RegisterFragment : Fragment() {
 
             if (username != "" && fullname != "" && password != "" && repdPass != ""){
                 if (password == repdPass){
-                    editor.putString("user", username)
-                    editor.putString("full", fullname)
-                    editor.putString("pass", password)
+                    editor.putString("username", username)
+                    editor.putString("fullname", fullname)
+                    editor.putString("password", password)
                     editor.apply()
 
                     Toast.makeText(context, "Register Berhasil", Toast.LENGTH_SHORT).show()
