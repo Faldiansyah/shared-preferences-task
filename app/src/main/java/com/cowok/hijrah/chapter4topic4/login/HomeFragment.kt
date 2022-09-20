@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
         editorLogin = sharedPrefLogin.edit()
 
         val fullname = sharedPrefRegis.getString("fullname", "")
-        binding.textHello.text = fullname
+        binding.textHello.text = "Selamat Datang, $fullname"
 
         binding.buttonLogout.setOnClickListener {
             editorLogin.clear()
